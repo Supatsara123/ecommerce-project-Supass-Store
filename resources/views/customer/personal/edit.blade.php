@@ -58,7 +58,7 @@
                     <div class="col-12 col-lg-6 col-md-6">
                         <label class="form-label">Email<span class="text-danger">*</span> :</label>
                         <div class="info-icon">
-                            <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" disabled>
+                            <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" disabled>
                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                             <button type="button" class="btn btn-link" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<small>This information cannot be edited. Please contact admin.</small>">
                                 <i class="bi bi-info-circle"></i>

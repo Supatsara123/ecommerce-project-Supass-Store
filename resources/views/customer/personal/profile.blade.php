@@ -17,10 +17,6 @@
                             height="100px" style="object-fit: cover;" />
                     @endif
 
-                    {{-- <span class="badge bg-secondary border border-secondary mt-2" onclick="editImg(event)">
-                        <small>Edit Image</small>
-                        <i class="bi bi-pencil"></i>
-                    </span> --}}
                     <button class="btn btn-outline-secondary btn-sm" onclick="editImg(event)">
                         <small>Edit Image</small>
                         <i class="bi bi-pencil"></i>
@@ -50,7 +46,10 @@
 
                         <div class="p-4 bg-white rounded">
                             <div class="row">
-                                <h4 class="py-2">Basic Info</h4>
+                                <div class="d-flex">
+                                    <h4 class="py-2">Basic Info</h4>
+                                    @include('components.editProfileInfoModal')
+                                </div>
 
                                 <div class="d-flex">
                                     <label class="w-25"><strong>Name :</strong></label>

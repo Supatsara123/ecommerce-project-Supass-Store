@@ -218,7 +218,39 @@ class CustomerController extends Controller
         $user->updated_at->now();
         $user->update();
 
-        return redirect()->route('profile')->with('status', 'Update Address Successfully');
+        return redirect()->route('profile')->with('status', 'Address updated Successfully');
+    }
+
+    public function editBasicInfo(Request $request)
+    {
+        // Custom Error Messages
+        $messages = [
+            'fname.required' => 'First name is required.',
+            'lname.required' => 'Last name is required.',
+            'gender.required' => 'Gender is required.',
+            'dateOfBirth.required' => 'Date of Birth is required.',
+        ];
+
+        $request->validate([
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'gender' => 'required|string',
+            'dateOfBirth' => 'required|date',
+        ], $messages);
+
+        $user = User::where('id', Auth::id())->first();
+        $user = auth()->user();
+
+        $user = User::where('id', Auth::id())->first();
+        $user->fname = $request->input('fname');
+        $user->lname = $request->input('lname');
+        $user->gender = $request->input('gender');
+        $user->dateOfBirth = $request->input('dateOfBirth');
+        $user->updated_at->now();
+        $user->update();
+
+        return redirect()->route('profile')
+            ->with('status', 'Update Profile Successfully');
     }
 
     public function addresses()

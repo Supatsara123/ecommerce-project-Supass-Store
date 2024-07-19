@@ -158,9 +158,24 @@ Laravel ecommerce has various features listed below:
 -------------------
 ## Instruction
 
-1. Extract the downloaded .zip file.
-2. Run the following command : "composer install" - to install the required packages.
-3. Setup Database in .env file.
-4. You will have a .sql file (DB) inside public folder containing all the data shown in the video. You can import this .sql file in your database (if you are importing the .sql file, you can skip step 5). If you want a fresh database, you can skip Step 4.
-5. Run the migrate command : "php artisan migrate".
-6. The project is ready to run. Run the command : "php artisan serve" and you have your project running.
+1. Clone the repository: git clone <repository-url>
+2. Navigate to the project directory: cd <repository-name>
+3. Install dependencies: composer install
+4. Set up environment variables: cp .env.example .env
+5. Generate an application key: php artisan key:generate
+6. Configure the database and run migrations: php artisan migrate
+7. (Optional) Seed the database: php artisan db:seed
+Start the development server: php artisan serve
+
+## How to Install
+
+1. Run git clone 'link projer github'
+2. composer install
+3. cp .env.example .env or copy .env.example .env
+4. php artisan key:generate
+5. php artisan migrate
+6. php artisan db:seed
+7. php artisan serve
+
+8. npm install
+9. npm run build

@@ -11,11 +11,11 @@
                 <h1 class="modal-title fs-5" id="ModalLabel">Edit Address</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('profile.update.address', $user->id) }}" id="updateForm" enctype="multipart/form-data">
-                    @csrf
+            <form method="POST" action="{{ route('profile.editAddress', $user->id) }}" enctype="multipart/form-data">
+                @csrf
 
-                    @method('PUT')
+                @method('PUT')
+                <div class="modal-body">
                     <div class="row g-3 mb-3">
                         <div class="col-12 col-lg-6 col-md-6">
                             <label class="form-label">House no./Unit no.Building<span class="text-danger">*</span> :</label>
@@ -58,13 +58,13 @@
                             <div class="invalid-feedback">{{ $errors->first('postal_code') }}</div>
                         </div>
                     </div>
+                </div>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

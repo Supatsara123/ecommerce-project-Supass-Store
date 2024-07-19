@@ -1,0 +1,38 @@
+/* thai font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+/* eng font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+body {
+    font-family: "Noto Sans Thai", "Montserrat", sans-serif;
+    font-size: 14px;
+    margin-top: 40px;
+    background-color: #f8f9fa;
+}
+
+/* editor */
+.ck-editor__editable_inline {
+    min-height: 200px;
+}
+
+.nav-bg{
+    background-color: #a2d1ff;
+}
+.nav-side{
+    width: auto;
+    min-height: 100vh;
+    color: white;
+}
+.nav-bg-dark{
+    background-color: #4a98e6;
+}
+
+.nav-link{
+    color: white;
+    font-size: 16px;
+    text-decoration: none !important;
+}
+.nav-link:hover{
+    color: rgb(14, 38, 147);
+}

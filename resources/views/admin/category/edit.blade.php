@@ -1,0 +1,87 @@
+@extends('layouts.admin')
+
+@section('title', 'Edit Category')
+
+@section('content')
+
+    <div class="col-lg-10 col-md-10 col-sm-12 mx-auto">
+
+        <div class="mb-5 text-center">
+            <h2>Edit Form Category</h2>
+        </div>
+
+        <div class="card shadow-lg p-4 mb-5">
+            <div class="row g-5">
+                <h4 class="mb-2">Edit Category</h4>
+
+                <form method="POST" action="{{ route('category.update', $category->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="row g-3">
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <label class="form-label">Name<span class="text-danger">*</span> :</label>
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                                value="{{ old('name', $category->name) }}">
+                            <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <label class="form-label">Slug<span class="text-danger">*</span> :</label>
+                            <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror"
+                                value="{{ $category->slug }}" oninput="this.value = this.value.toLowerCase()">
+                            <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                            <label class="form-label">Description<span class="text-danger">*</span> :</label>
+                            <textarea name="description" rows="3" class="form-control @error('description') is-invalid @enderror">{{ $category->description }}</textarea>
+                            <div class="invalid-feedback">{{ $errors->first('description') }}</div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <label class="form-label">Status<span class="text-danger">*</span> :</label>
+                            <input type="checkbox" name="status" class="@error('status') is-invalid @enderror"
+                                {{ $category->status == '1' ? 'checked' : '' }}>
+                            <div class="invalid-feedback">{{ $errors->first('status') }}</div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <label class="form-label">Popular<span class="text-danger">*</span> :</label>
+                            <input type="checkbox" name="popular" class="@error('popular') is-invalid @enderror"
+                                {{ $category->popular == '1' ? 'checked' : '' }}>
+                            <div class="invalid-feedback">{{ $errors->first('popular') }}</div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 mb-3">
+                            <label for="image" class="col-form-label">Current Image <span class="text-danger">*</span></label>
+                            <div class="mb-2">
+                                @if ($category->image)
+                                    <img src="{{ asset('/' . $category->image) }}" alt="Img" class="size-image">
+                                @else
+                                    <p class="text-secondary bg-secondary">No image available.</p>
+                                @endif
+                            </div>
+
+                            <label for="image" class="col-form-label">Change Image<span class="text-danger">*</span>:</label>
+                            <input type="file" id="image" name="image" accept=".jpg,.gif,.png"
+                                class="form-control @error('image') is-invalid @enderror" value="{{ $category->image }}">
+                            @error('image')
+                                <span class="text text-danger my-1" style="font-size: 13px;">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <hr class="my-4">
+
+                        {{-- Buttons --}}
+                        <div class="row g-2">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <a href="/admin/category-list" class="btn btn-outline-secondary w-100">
+                                    Cancel
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <input type="submit" value="Save" class="btn btn-dark w-100">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection

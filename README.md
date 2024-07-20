@@ -130,18 +130,29 @@ copy .env.example .env
 php artisan key:generate
 ```
 
-### 6. Configure the database and run migrations: 
+### 6. Set Up the Database
+
+Configure your database settings in the .env file. You'll need to provide the database connection details, such as database name, username, and password:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+### 7. Configure the database and run migrations: 
 ```shell
 php artisan migrate
 ```
 
-### 7. (Optional) Seed the database: 
+### 8. Seed the database: 
 ```shell
 php artisan db:seed
 ```
 
 
-### 8. Vite Installation
+### 9. Vite Installation
 
 - Install dependencies
 
@@ -155,11 +166,10 @@ npm install
 npm run build
 ```
 
-### Start the development server: 
+### 10. Start the development server: 
 ```shell
 php artisan serve
 ```
-
 
 
 ## How to Install

@@ -7,10 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Overiew
+## About My Project
 Laravel ecommerce is built in laravel 8 version and MySQL database for the backend. It has different features for the user like a user can view all the category, select a product and select the quantity and add the product to his cart. The user can add multiple products in cart and wishlist. There are mutliple payment methods in the checkout page such as PayPal, Razorpay and COD.
 
-## About My Project
 
 ## Intro
 - Build project at: 17/06/2567 - until now
@@ -141,7 +140,10 @@ DB_DATABASE=your_database
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 
-### 7. Configure the database and run migrations: 
+### 7. Configure the database and run migrations
+
+Run migrations to create the necessary tables in your database:
+
 ```shell
 php artisan migrate
 ```
@@ -166,10 +168,15 @@ npm install
 npm run build
 ```
 
-### 10. Start the development server: 
+### 10. Start the Development Server
+
+To start the built-in Laravel development server, run:
+
 ```shell
 php artisan serve
 ```
+
+By default, this will start the server on 'http://localhost:8000.'
 
 
 ## How to Install

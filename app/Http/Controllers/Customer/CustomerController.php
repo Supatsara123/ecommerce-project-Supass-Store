@@ -252,6 +252,28 @@ class CustomerController extends Controller
         return redirect()->route('profile')
             ->with('status', 'Update Profile Successfully');
     }
+    public function editContact(Request $request)
+    {
+        // Custom Error Messages
+        $messages = [
+            'phone.required' => 'Phone number is required.',
+        ];
+
+        $request->validate([
+            'phone' => 'required|string|max:20',
+        ], $messages);
+
+        $user = User::where('id', Auth::id())->first();
+        $user = auth()->user();
+
+        $user = User::where('id', Auth::id())->first();
+        $user->phone = $request->input('phone');
+        $user->updated_at->now();
+        $user->update();
+
+        return redirect()->route('profile')
+            ->with('status', 'Update Profile Successfully');
+    }
 
     public function addresses()
     {

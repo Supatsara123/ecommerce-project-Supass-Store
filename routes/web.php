@@ -69,6 +69,8 @@ Route::prefix('customer')->group(function () {
 
         Route::put('/personal/update-address/{id}', [CustomerController::class, 'editAddress'])->name('profile.editAddress');
         Route::put('/personal/update-profile-basic-info/{id}', [CustomerController::class, 'editBasicInfo'])->name('profile.editBasicInfo');
+        Route::put('/personal/update-contact/{id}', [CustomerController::class, 'editContact'])->name('profile.editContact');
+
     });
 
     Route::get('/promotion', [PromotionDetailController::class, 'index'])->name('promotion.index');

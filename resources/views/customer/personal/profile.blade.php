@@ -7,7 +7,7 @@
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
 
         <div>
-            <div class="row d-flex align-items-center text-center m">
+            <div class="row d-flex align-items-center text-center">
                 <div class="col-12 col-md-2 text-center">
                     @if ($user->image !== null)
                         <img src="{{ asset($user->image) }}" class="rounded-circle" width="100px" height="100px"
@@ -17,7 +17,7 @@
                             height="100px" style="object-fit: cover;" />
                     @endif
 
-                    <button class="btn btn-outline-secondary btn-sm" onclick="editImg(event)">
+                    <button class="btn btn-outline-secondary btn-sm mt-2" onclick="editImg(event)">
                         <small>Edit Image</small>
                         <i class="bi bi-pencil"></i>
                     </button>
@@ -32,17 +32,16 @@
 
             {{-- <div class="container bg-white rounded p-4"> --}}
 
-                <div class="py-5">
+                <div class="py-2">
                     <h2>My Profile</h2>
                 </div>
 
                 @if ($user->fname !== null)
                     <div class="row g-2">
 
-                        <a href="{{ route('profile.edit') }}" class="text-end">
-                            <button class="btn btn-dark btn-sm">Edit
-                                Profile</button>
-                        </a>
+                        {{-- <a href="{{ route('profile.edit') }}" class="text-end">
+                            <button class="btn btn-dark btn-sm">Edit Profile</button>
+                        </a> --}}
 
                         <div class="p-4 bg-white rounded">
                             <div class="row">
@@ -54,7 +53,6 @@
                                 <div class="d-flex">
                                     <label class="w-25"><strong>Name :</strong></label>
                                     <p class="px-2">{{ Str::title($user->fname) }} {{ Str::title($user->lname) }}</p>
-
                                 </div>
                                 <div class="d-flex">
                                     <label class="w-25"><strong>Gender :</strong></label>
@@ -69,7 +67,10 @@
 
                         <div class="p-4 bg-white rounded">
                             <div class="row">
-                                <h4 class="py-2">Contact Info</h4>
+                                <div class="d-flex">
+                                    <h4 class="py-2">Contact Info</h4>
+                                    @include('components.editContactModal')
+                                </div>
 
                                 <div class="d-flex">
                                     <label class="w-25"><strong>Phone Number :</strong></label>

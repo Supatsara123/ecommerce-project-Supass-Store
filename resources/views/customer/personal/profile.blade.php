@@ -6,6 +6,7 @@
 
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
 
+
         <div>
             <div class="row d-flex align-items-center text-center">
                 <div class="col-12 col-md-2 text-center">
@@ -36,87 +37,108 @@
                     <h2>My Profile</h2>
                 </div>
 
-                @if ($user->fname !== null)
-                    <div class="row g-2">
-
-                        {{-- <a href="{{ route('profile.edit') }}" class="text-end">
-                            <button class="btn btn-dark btn-sm">Edit Profile</button>
-                        </a> --}}
-
-                        <div class="p-4 bg-white rounded">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <h4 class="py-2">Basic Info</h4>
-                                    @include('components.editProfileInfoModal')
-                                </div>
-
-                                <div class="d-flex">
-                                    <label class="w-25"><strong>Name :</strong></label>
-                                    <p class="px-2">{{ Str::title($user->fname) }} {{ Str::title($user->lname) }}</p>
-                                </div>
-                                <div class="d-flex">
-                                    <label class="w-25"><strong>Gender :</strong></label>
-                                    <p class="px-2">{{ $user->gender }}</p>
-                                </div>
-                                <div class="d-flex">
-                                    <label class="w-25"><strong>Birth :</strong></label>
-                                    <p class="px-2">{{ $user->dateOfBirth }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-4 bg-white rounded">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <h4 class="py-2">Contact Info</h4>
-                                    @include('components.editContactModal')
-                                </div>
-
-                                <div class="d-flex">
-                                    <label class="w-25"><strong>Phone Number :</strong></label>
-                                    <p class="px-2">{{ $user->phone }}</p>
-                                </div>
-                                <div class="d-flex">
-                                    <label class="w-25"><strong>Email :</strong></label>
-                                    <p class="px-2">{{ $user->email }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-4 bg-white rounded">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <h4 class="py-2">Address</h4>
-                                    @include('components.editAddressModal')
-                                </div>
-
-                                <div class="row d-flex">
-                                    <p>
-                                        {{ $user->house_number }}
-                                        Moo {{ $user->moo }}
-                                        {{ $user->soi }}
-                                        {{ $user->Road }}
-                                        {{ $user->sub_district }},
-                                        District {{ $user->district }}
-                                        {{ $user->province }}
-                                        Postal Code: {{ $user->postal_code }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between">
+                                My Profile
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                Payment Method
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                Change Password
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                Cart
+                            </li>
+                        </ul>
                     </div>
-                @else
-                    <div class="tenter" height="500px">
-                        <img src="/image/img_data_not_found.png" alt="Img" width="200px" height="200px">
-                        <h6 class="text-secondary">No Data Profile.</h6>
-                        <a href=" {{ route('profile.edit') }}">
-                            <button class="btn btn-danger">Create Data
-                                Profile</button>
-                        </a>
+
+                    <div class="right-top col-md-8">
+                        @if ($user->fname !== null)
+                            <div class="row g-2">
+
+                                {{-- <a href="{{ route('profile.edit') }}" class="text-end">
+                                    <button class="btn btn-dark btn-sm">Edit Profile</button>
+                                </a> --}}
+
+                                <div class="p-4 bg-white rounded">
+                                    <div class="row">
+                                        <div class="d-flex">
+                                            <h4 class="py-2">Basic Info</h4>
+                                            @include('components.editProfileInfoModal')
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label class="w-25"><strong>Name :</strong></label>
+                                            <p class="px-2">{{ Str::title($user->fname) }} {{ Str::title($user->lname) }}</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <label class="w-25"><strong>Gender :</strong></label>
+                                            <p class="px-2">{{ $user->gender }}</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <label class="w-25"><strong>Birth :</strong></label>
+                                            <p class="px-2">{{ $user->dateOfBirth }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 bg-white rounded">
+                                    <div class="row">
+                                        <div class="d-flex">
+                                            <h4 class="py-2">Contact Info</h4>
+                                            @include('components.editContactModal')
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label class="w-25"><strong>Phone Number :</strong></label>
+                                            <p class="px-2">{{ $user->phone }}</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <label class="w-25"><strong>Email :</strong></label>
+                                            <p class="px-2">{{ $user->email }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 bg-white rounded">
+                                    <div class="row">
+                                        <div class="d-flex">
+                                            <h4 class="py-2">Address</h4>
+                                            @include('components.editAddressModal')
+                                        </div>
+
+                                        <div class="row d-flex">
+                                            <p>
+                                                {{ $user->house_number }}
+                                                Moo {{ $user->moo }}
+                                                {{ $user->soi }}
+                                                {{ $user->sub_district }},
+                                                {{ $user->Road }}
+                                                {{ $user->district }} District,
+                                                {{ $user->province }}
+                                                {{ $user->postal_code }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        @else
+                            <div class="tenter" height="500px">
+                                <img src="/image/img_data_not_found.png" alt="Img" width="200px" height="200px">
+                                <h6 class="text-secondary">No Data Profile.</h6>
+                                <a href=" {{ route('profile.edit') }}">
+                                    <button class="btn btn-danger">Create Data
+                                        Profile</button>
+                                </a>
+                            </div>
+                        @endif
                     </div>
-                @endif
-            </div>
+                </div>
+            {{-- </div> --}}
         </div>
     </div>
 

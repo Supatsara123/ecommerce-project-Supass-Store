@@ -6,9 +6,8 @@
 
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
 
-
-        <div>
-            <div class="row d-flex align-items-center text-center">
+        <div class="row g-2 mb-5">
+            <div class="d-flex align-items-center text-center bg-secondary py-4">
                 <div class="col-12 col-md-2 text-center">
                     @if ($user->image !== null)
                         <img src="{{ asset($user->image) }}" class="rounded-circle" width="100px" height="100px"
@@ -18,127 +17,132 @@
                             height="100px" style="object-fit: cover;" />
                     @endif
 
-                    <button class="btn btn-outline-secondary btn-sm mt-2" onclick="editImg(event)">
+                    <button class="btn btn-outline-dark btn-sm p-1 mt-2" onclick="editImg(event)">
                         <small>Edit Image</small>
                         <i class="bi bi-pencil"></i>
                     </button>
                 </div>
-                <div class="col-12 col-md-4 text-start">
-                    <div class="row">
-                        <h4 class="fw-light mb-0">Hello</h4>
+                <div class="col-12 col-md-4 text-start ms-3">
+                    <div class="row text-white">
                         <h3>{{ $user->name }}</h3>
+                        <h6 class="fw-light mb-4">{{ $user->email }}</h6>
+
+                        <h6 class="fw-light mb-0">Logout</h6>
                     </div>
                 </div>
             </div>
+        </div>
 
-            {{-- <div class="container bg-white rounded p-4"> --}}
+        <div class="row g-4">
+            <div class="col-md-4">
+                <ul class="list-group text-start">
+                    {{-- <li class="list-group-item w-100"> --}}
+                    <a class="nav-link-profile" href="{{ route('profile') }}">
+                        <button class="btn btn-lg btn-light text-start w-100">
+                            <i class="bi bi-tags"></i>
+                            My Profile
+                        </button>
+                    </a>
+                    {{-- </li> --}}
+                    <li class="list-group-item d-flex justify-content-start">
+                        Payment Method
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start">
+                        Change Password
+                    </li>
+                    <li class="list-group-item d-flex justify-content-start">
+                        Cart
+                    </li>
+                </ul>
+            </div>
+
+            <div class="right-top col-md-8">
 
                 <div class="py-2">
                     <h2>My Profile</h2>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between">
-                                My Profile
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                Payment Method
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                Change Password
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                Cart
-                            </li>
-                        </ul>
-                    </div>
+                @if ($user->fname !== null)
+                    <div class="row g-2">
 
-                    <div class="right-top col-md-8">
-                        @if ($user->fname !== null)
-                            <div class="row g-2">
-
-                                {{-- <a href="{{ route('profile.edit') }}" class="text-end">
+                        {{-- <a href="{{ route('profile.edit') }}" class="text-end">
                                     <button class="btn btn-dark btn-sm">Edit Profile</button>
                                 </a> --}}
 
-                                <div class="p-4 bg-white rounded">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <h4 class="py-2">Basic Info</h4>
-                                            @include('components.editProfileInfoModal')
-                                        </div>
-
-                                        <div class="d-flex">
-                                            <label class="w-25"><strong>Name :</strong></label>
-                                            <p class="px-2">{{ Str::title($user->fname) }} {{ Str::title($user->lname) }}</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="w-25"><strong>Gender :</strong></label>
-                                            <p class="px-2">{{ $user->gender }}</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="w-25"><strong>Birth :</strong></label>
-                                            <p class="px-2">{{ $user->dateOfBirth }}</p>
-                                        </div>
-                                    </div>
+                        <div class="p-4 bg-white rounded">
+                            <div class="row">
+                                <div class="d-flex">
+                                    <h4 class="py-2">Basic Info</h4>
+                                    @include('components.editProfileInfoModal')
                                 </div>
 
-                                <div class="p-4 bg-white rounded">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <h4 class="py-2">Contact Info</h4>
-                                            @include('components.editContactModal')
-                                        </div>
-
-                                        <div class="d-flex">
-                                            <label class="w-25"><strong>Phone Number :</strong></label>
-                                            <p class="px-2">{{ $user->phone }}</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <label class="w-25"><strong>Email :</strong></label>
-                                            <p class="px-2">{{ $user->email }}</p>
-                                        </div>
-                                    </div>
+                                <div class="d-flex">
+                                    <label class="w-25 text-end"><strong>Name :</strong></label>
+                                    <p class="px-4">{{ Str::title($user->fname) }} {{ Str::title($user->lname) }}</p>
                                 </div>
-
-                                <div class="p-4 bg-white rounded">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <h4 class="py-2">Address</h4>
-                                            @include('components.editAddressModal')
-                                        </div>
-
-                                        <div class="row d-flex">
-                                            <p>
-                                                {{ $user->house_number }}
-                                                Moo {{ $user->moo }}
-                                                {{ $user->soi }}
-                                                {{ $user->sub_district }},
-                                                {{ $user->Road }}
-                                                {{ $user->district }} District,
-                                                {{ $user->province }}
-                                                {{ $user->postal_code }}
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="d-flex">
+                                    <label class="w-25 text-end"><strong>Gender :</strong></label>
+                                    <p class="px-4">{{ $user->gender }}</p>
                                 </div>
-
+                                <div class="d-flex">
+                                    <label class="w-25 text-end"><strong>Birth :</strong></label>
+                                    <p class="px-4">{{ $user->dateOfBirth }}</p>
+                                </div>
                             </div>
-                        @else
-                            <div class="tenter" height="500px">
-                                <img src="/image/img_data_not_found.png" alt="Img" width="200px" height="200px">
-                                <h6 class="text-secondary">No Data Profile.</h6>
-                                <a href=" {{ route('profile.edit') }}">
-                                    <button class="btn btn-danger">Create Data
-                                        Profile</button>
-                                </a>
+                        </div>
+
+                        <div class="p-4 bg-white rounded">
+                            <div class="row">
+                                <div class="d-flex">
+                                    <h4 class="py-2">Contact Info</h4>
+                                    @include('components.editContactModal')
+                                </div>
+
+                                <div class="d-flex">
+                                    <label class="w-25"><strong>Phone Number :</strong></label>
+                                    <p class="px-2">{{ $user->phone }}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <label class="w-25"><strong>Email :</strong></label>
+                                    <p class="px-2">{{ $user->email }}</p>
+                                </div>
                             </div>
-                        @endif
+                        </div>
+
+                        <div class="p-4 bg-white rounded">
+                            <div class="row">
+                                <div class="d-flex">
+                                    <h4 class="py-2">Address</h4>
+                                    @include('components.editAddressModal')
+                                </div>
+
+                                <div class="row d-flex">
+                                    <p>
+                                        {{ $user->house_number }}
+                                        Moo {{ $user->moo }}
+                                        {{ $user->soi }}
+                                        {{ $user->sub_district }},
+                                        {{ $user->Road }}
+                                        {{ $user->district }} District,
+                                        {{ $user->province }}
+                                        {{ $user->postal_code }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-            {{-- </div> --}}
+                @else
+                    <div class="tenter" height="500px">
+                        <img src="/image/img_data_not_found.png" alt="Img" width="200px" height="200px">
+                        <h6 class="text-secondary">No Data Profile.</h6>
+                        <a href=" {{ route('profile.edit') }}">
+                            <button class="btn btn-danger">Create Data
+                                Profile</button>
+                        </a>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 

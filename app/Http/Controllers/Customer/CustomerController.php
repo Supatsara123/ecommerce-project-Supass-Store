@@ -275,6 +275,30 @@ class CustomerController extends Controller
             ->with('status', 'Update Profile Successfully');
     }
 
+    public function changePassword(Request $request)
+    {
+        // Custom Error Messages
+        $messages = [
+            'password.required' => 'password is required.',
+            'password.min' => 'At least 8 characters.',
+        ];
+
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ], $messages);
+
+        $user = User::where('id', Auth::id())->first();
+        $user = auth()->user();
+
+        $user = User::where('id', Auth::id())->first();
+        $user->phone = $request->input('phone');
+        $user->updated_at->now();
+        $user->update();
+
+        return redirect()->route('profile')
+            ->with('status', 'Update Password Successfully');
+    }
+
     public function addresses()
     {
         // $address = Address::all();

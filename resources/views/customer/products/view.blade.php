@@ -5,14 +5,19 @@
 @section('content')
     <div class="col-lg-9 col-md-10 col-sm-12 mx-auto">
         <div class="container p-4 bg-white rounded">
-            <p class="mb-0">Collection / {{ $products->category->name }} / {{ $products->name }} </p>
+            <div class="mb-0">
+                <a href="{{ route('customer.index') }}">Home </a>/
+                <a href="{{ route('category') }}">All Categories </a>/
+                <a href="{{ route('viewcategory', $products->category->slug) }}">{{ $products->category->name }} </a>/
+                <div class="text-secondary mb-0">{{ $products->name }}</div>
+            </div>
+
         </div>
 
         <br>
 
-        <div class="container product_data">
-            <div class="bg-white rounded">
-                <div class="row g-5 p-4">
+        <div class="container bg-white rounded">
+                <div class="row p-4">
 
                     {{-- Image product --}}
                     <div class="col-md-5 col-sm-12 border-right">
@@ -40,14 +45,15 @@
 
                         <div class="flex flex-column">
                             <div class="d-flex">
-                                <p class="me-2">หมวดหมู่</p>
-                                <i class="bi bi-tags"></i> : <a
-                                    href="{{ route('viewcategory', $products->cate_id) }}">{{ $products->category->name }}</a>
+                                <p class="me-1">หมวดหมู่</p>
+                                <i class="bi bi-tags"></i>
+                                <span class="px-2">:</span>
+                                <a href="{{ route('viewcategory', $products->cate_id) }}">{{ $products->category->name }}</a>
                             </div>
 
                             <div class="d-flex align-items-center">
                                 <span class="text-decoration-line-through text-secondary me-2">฿{{ number_format($products['original_price'], 2) }}</span>
-                                <h3>฿{{ number_format($products['selling_price'], 2) }}</h3>
+                                <h3>฿ {{ number_format($products['selling_price'], 2) }}</h3>
                             </div>
 
                             <div class="flex items-center">

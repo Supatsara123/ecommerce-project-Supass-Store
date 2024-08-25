@@ -100,7 +100,8 @@
                 @if (isset($featured_product) && count($featured_product) > 0)
                     @foreach ($featured_product as $item)
                         <div class="col-6 col-lg-2 col-md-3 g-2">
-                            {{-- <a href="{{ url('customer/category/'.$category->slug.'/'.$item->slug) }}"> --}}
+                            {{-- <a href="{{ url('customer/category/' . $category->slug . '/' . $prod->slug) }}"> --}}
+                            <a href="{{ url('customer/category/'.$category->slug.'/'.$item->slug) }}">
                                 <div class="card shadow-sm">
                                     <img src="{{ asset($item->image) }}" class="card-img-top" alt="{{ $item->name }}">
                                     <div class="card-body">
@@ -111,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            {{-- </a> --}}
+                            </a>
                         </div>
                     @endforeach
                 @else

@@ -10,8 +10,9 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span class="px-2">/</span> Your Cart
+                    <a href="{{ route('customer.index') }}">Home</a>
+                    <span class="px-2">/</span>
+                    <div class="text-secondary mb-0">Your Cart</div>
                 </div>
             </div>
         </div>

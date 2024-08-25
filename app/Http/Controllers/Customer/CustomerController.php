@@ -50,7 +50,6 @@ class CustomerController extends Controller
     public function profile()
     {
         if (Auth::id()) {
-
             $user = User::where('id', Auth::id())->first();
             $user = auth()->user();
 
@@ -63,7 +62,6 @@ class CustomerController extends Controller
     public function edit()
     {
         if (Auth::id()) {
-
             $user = User::where('id', Auth::id())->first();
             $user = auth()->user();
 

@@ -61,4 +61,5 @@ class HomeController extends Controller
 
         return view('customer.home', compact('promotions', 'featured_product', 'trending_category', 'category'));
     }
+
 }

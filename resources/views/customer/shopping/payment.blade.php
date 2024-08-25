@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title', 'Cart')
+@section('title', 'Payment')
 
 @section('content')
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
@@ -9,22 +9,20 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
-                    <span class="px-2">/</span> Shop
-                    <span class="px-2">/</span> Payment
+                    <a href="{{ route('customer.index') }}">Home</a>
+                    <span class="px-2">/</span><a href="{{ route('cart') }}">Cart</a>
+                    <span class="px-2">/</span><div class="text-secondary mb-0">Payment</div>
                 </div>
             </div>
         </div>
 
-        <div class="container p-4 bg-white">
+        <div class="container p-4">
             <div class="row g-5">
 
                 <h2 class="fw-bold">Payment</h2>
                 <hr class="my-0">
 
-                <div class="col-12 col-md-7">
-                    {{-- <form method="POST" action="{{ route('submit_payment') }}">
-                    @csrf --}}
+                <div class="col-12 col-md-7 p-4 bg-white rounded">
 
                     {{-- Customer --}}
                     <section>
@@ -35,9 +33,9 @@
                             </div>
 
                             <div class="d-flex flex-column">
-                                <div>Name Lastname</div>
-                                <div>Email</div>
-                                <div>Phone</div>
+                                <div>{{ $user->fname }} {{ $user->lname }}</div>
+                                <div>{{ $user->email }}</div>
+                                <div>{{ $user->phone }}</div>
                             </div>
                         </div>
                     </section>
@@ -53,9 +51,18 @@
                             </div>
 
                             <div class="d-flex flex-column">
-                                <div>Name Lastname</div>
-                                <div>Address</div>
-                                <div>Phone</div>
+                                <div>{{ $user->fname }} {{ $user->lname }}</div>
+                                <div class="d-flex flex-row">
+                                        {{ $user->house_number }}
+                                        Moo {{ $user->moo }}
+                                        {{ $user->soi }}
+                                        {{ $user->sub_district }},
+                                        {{ $user->Road }}
+                                        {{ $user->district }} District,
+                                        {{ $user->province }}
+                                        {{ $user->postal_code }}
+                                </div>
+                                <div>{{ $user->phone }}</div>
                             </div>
                         </div>
                     </section>
@@ -63,7 +70,7 @@
                     <hr class="my-4">
 
                     {{-- Shipping --}}
-                    <section class="bg-white">
+                    <section>
                         <div class="row">
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-truck fs-3"></i>
@@ -166,8 +173,9 @@
                                         </tr>
                                         <tr>
                                             <td class="cart_total_label">Total</td>
-                                            <td class="cart_total_amount"><strong><span
-                                                        class="font-xl fw-900 text-brand">$240.00</span></strong>
+                                            <td class="cart_total_amount"><strong>
+                                                <span
+                                                class="font-xl fw-900 text-brand">$240.00</span></strong>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -175,18 +183,10 @@
                             </div>
                         </div>
                     </section>
-                    {{-- </form> --}}
 
-                    {{-- Button --}}
-                    <div class="text-end">
-                        <a href="#" class="btn btn-danger">
-                            <i class="bi bi-cart4"></i>
-                            Buy
-                        </a>
-                    </div>
                 </div>
 
-                <div class="right-top col-md-5">
+                <div class="right-top col-12 col-md-5 p-4 bg-white rounded">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span>My Order</span>
                         <span class="badge bg-primary rounded-pill">{{ count($cartItems) }}</span>
@@ -203,20 +203,67 @@
                             </li>
                         @endforeach
 
-                        <li class="list-group-item d-flex justify-content-between bg-light">
-                            <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
-                                <small>ส่วนลดพิเศษ</small>
-                            </div>
-                            <span class="text-success">−฿5</span>
-                        </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (BATH)</span>
                             {{-- <strong>{{ number_format($total, 2) }}</strong> --}}
                         </li>
                     </ul>
                 </div>
+
+                <form method="POST" action="{{ route('placeorder', $user->id) }}" id="updateForm"
+                    enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="row g-3 mb-3">
+
+                        <!-- Hidden input fields for predefined values -->
+                        <input type="hidden" name="fname" value={{ $user->fname }}>
+                        <input type="hidden" name="lname" value={{ $user->lname }}>
+                        <input type="hidden" name="email" value={{ $user->email }}>
+                        <input type="hidden" name="phone" value={{ $user->phone }}>
+                        <input type="hidden" name="house_number" value={{ $user->house_number }}>
+                        <input type="hidden" name="moo" value={{ $user->moo }}>
+                        <input type="hidden" name="soi" value={{ $user->soi }}>
+                        <input type="hidden" name="road" value={{ $user->road }}>
+                        <input type="hidden" name="province" value={{ $user->province }}>
+                        <input type="hidden" name="district" value={{ $user->district }}>
+                        <input type="hidden" name="sub_district" value={{ $user->sub_district }}>
+                        <input type="hidden" name="postal_code" value={{ $user->postal_code }}>
+
+                        {{-- Buttons --}}
+                        <div class="row g-2 text-center">
+                            <div class="col-6 col-md-4">
+                                <a href="{{ route('cart') }}">
+                                    <button class="btn btn-outline-secondary w-100">
+                                        Cancel
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <button type="submit" class="btn btn-danger w-100">
+                                    <i class="bi bi-cart4"></i>
+                                    Buy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+
+    <style>
+        /* Hide the number input spinner */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
 @endsection

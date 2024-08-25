@@ -56,7 +56,7 @@ Route::prefix('customer')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/personal/cart', [CartController::class, 'cart'])->name('cart');
         Route::get('/personal/payment', [CheckoutController::class, 'index'])->name('payment.index');
-        Route::post('/personal/place-order', [CheckoutController::class, 'placeorder'])->name('placeorder');
+        Route::post('/personal/place-order/{id}', [CheckoutController::class, 'placeorder'])->name('placeorder');
 
         // Route::get('/place-order', [OrderController::class, 'placeorder'])->name('order.index');
 

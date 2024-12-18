@@ -8,21 +8,18 @@
 </p>
 
 ## About My Project
-Laravel ecommerce is built in laravel 8 version and MySQL database for the backend. It has different features for the user like a user can view all the category, select a product and select the quantity and add the product to his cart. The user can add multiple products in cart and wishlist. There are mutliple payment methods in the checkout page such as PayPal, Razorpay and COD.
+Laravel e-commerce is built in laravel v.10.0 and MySQL database for the backend. It has different features for the user like a user can view all the category, select a product and select the quantity and add the product to your cart. The user can add multiple products in cart and wishlist. There are mutliple payment methods in the checkout page such as PromptPay and COD.
 
 
 ## Intro
-- Build project at: 17/06/2567 - until now
+- Build project at: 17/06/2567 (Not Complete)
 - Developer: Supatsara Bangnimnoi
 - Email: supatsara.bnn@gmail.com
 - Location: TH
 
-- Permission at :: 21/06/2567
-- Role at :: 22/06/67
-
 ## Tools
 - vscode
-- php laravel framwork 10.0
+- php laravel framwork v.10.0
 - php version 8.2.12
 - boostrap
 - mysql
@@ -70,10 +67,10 @@ Laravel ecommerce has various features listed below:
 3. Add to Cart
 <!-- 4. Add to Wishlist -->
 <!-- 5. Add to cart with product quantity increment/decrement from the Cart and Wishlist page. -->
-6. Checkout information validation before placing order
-7. Checkout Page (Payment)
+4. Checkout information validation before placing order
+5. Checkout Page (Payment)
 <!-- 8. Multiple payment option during checkout - PayPal , Razorpay and Cash on Delivery -->
-9. View orders and order status
+6. View orders and order status
 <!-- 10. User can rate a product, out of 5 stars, only after purchasing the product -->
 <!-- 11. User can review a product only after purchasing the product -->
 <!-- 13. User can edit and update his ratings and reviews -->
@@ -84,15 +81,15 @@ Laravel ecommerce has various features listed below:
 1. Category CRUD
 2. Product CRUD
 <!-- 3. Control the visibility of product and category (Hide/Show) -->
-4. All Statistics on Dashboard (Total Orders, Uses, Completed Orders, etc)
-5. View Order and order items
-6. Update Order status
+3. All Statistics on Dashboard (Total Orders, Uses, Completed Orders, etc)
+4. View Order and order items
+5. Update Order status
 
 #### SuperAdmin Side:
 1. View registered users
 2. Permission CRUD
-2. Role CRUD
-3. Give role to user
+3. Role CRUD
+4. Give role to user
 
 
 -------------------

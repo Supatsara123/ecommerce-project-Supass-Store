@@ -131,6 +131,15 @@
             <div class="p-4 bg-white rounded">
                 <div class="row p-4">
                     <h4 class="text py-2 bg-light">Product Ratings</h4>
+
+                    {{-- <div class="rating">
+                        <span class="fa fa-star {{ $rating >= 1 ? 'checked' : '' }}"></span>
+                        <span class="fa fa-star {{ $rating >= 2 ? 'checked' : '' }}"></span>
+                        <span class="fa fa-star {{ $rating >= 3 ? 'checked' : '' }}"></span>
+                        <span class="fa fa-star {{ $rating >= 4 ? 'checked' : '' }}"></span>
+                        <span class="fa fa-star {{ $rating >= 5 ? 'checked' : '' }}"></span>
+                    </div> --}}
+
                 </div>
             </div>
         </div>

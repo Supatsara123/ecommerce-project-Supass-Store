@@ -24,7 +24,7 @@ class CustomerController extends Controller
     {
         if (Categories::where('slug', $slug)->exists()) {
             $category = Categories::where('slug', $slug)->first();
-            $products = Products::where('cate_id', $category->id)->where('status', '0')->get();
+            $products = Products::where('cate_id', $category->id)->where('status', '0')->get(); //status = 0 = display product
             return view('customer.products.index', compact('category', 'products'));
         } else {
             return redirect('/')->with('status', "Slug does not exist");

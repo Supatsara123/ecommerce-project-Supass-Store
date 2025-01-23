@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse pt-4" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item border-bottom w-100">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="#">
                         <i class="bi bi-grid"></i>
                         Dashboard
                     </a>
@@ -47,7 +47,8 @@
                     </a>
                 </li>
                 <li class="nav-item border-bottom w-100">
-                    <a class="nav-link" href="/admin/analiztic">
+                    {{-- <a class="nav-link" href="/admin/analiztic"> --}}
+                    <a class="nav-link" href="#">
                         <i class="bi bi-graph-up-arrow"></i>
                         Analiztic
                     </a>
@@ -101,7 +102,7 @@
             <!-- Nav link -->
             <ul class="nav nav-bg-dark nav-pills flex-column p-3 px-md-4 px-sm-2 mb-sm-auto align-items-center align-items-sm-start">
                 <li class="nav-item border-bottom w-100 {{ Request::is('dashboard') ? 'active':''; }}">
-                    <a href="/" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="bi bi-grid"></i>
                         Dashboard
                     </a>
@@ -133,7 +134,8 @@
                     </a>
                 </li>
                 <li class="nav-item border-bottom w-100">
-                    <a href="/admin/response" class="nav-link">
+                    {{-- <a href="/admin/analiztic" class="nav-link"> --}}
+                    <a href="#" class="nav-link">
                         <i class="bi bi-graph-up-arrow"></i>
                         Analiztic
                     </a>

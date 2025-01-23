@@ -11,18 +11,26 @@
 
             @if (isset($products) && count($products) > 0)
                 @foreach ($products as $prod)
-                    <div class="col-lg-3 col-md-4 col-sm-6 g-1">
+                    <div class="col-lg-3 col-md-3 col-sm-6 g-1">
                         <a href="{{ url('customer/category/' . $category->slug . '/' . $prod->slug) }}">
                             <div class="card">
                                 <img src="{{ asset('/' . $prod->image) }}" class="card-img-top" alt="{{ $prod['name'] }}">
                                 <div class="card-body">
                                     <strong>{{ $prod['name'] }}</strong>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="card-text text-success">฿{{ number_format($prod['selling_price'], 2) }}
+                                </div>
+                                <div class="card-footer bg-white border-0">
+                                    @if ($prod['selling_price'] != $prod['original_price'])
+                                        <div class="d-flex justify-content-between">
+                                            <p class="card-text text-success">฿{{ number_format($prod['selling_price'], 2) }}
+                                            </p>
+                                            <p class="text-decoration-line-through">
+                                                ฿{{ number_format($prod['original_price'], 2) }}</p>
+                                        </div>
+                                    @else
+                                        <p>
+                                            ฿{{ number_format($prod['original_price'], 2) }}
                                         </p>
-                                        <p class="text-decoration-line-through">
-                                            ฿{{ number_format($prod['original_price'], 2) }}</p>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>

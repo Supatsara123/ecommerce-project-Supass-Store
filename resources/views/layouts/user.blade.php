@@ -39,8 +39,12 @@
         @include('layouts.partials.footer')
     </div>
 
+    {{-- Rating star --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
 
     {{-- JS custom --}}
     <script src="{{ asset('customer/js/custom.js') }}"></script>

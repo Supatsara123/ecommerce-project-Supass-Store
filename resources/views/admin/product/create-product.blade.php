@@ -20,7 +20,7 @@
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
                             <label class="form-label">Name<span class="text-danger">*</span> :</label>
-                            <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" oninput="this.value = this.value.toSentence()">
                             <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12 mb-3">

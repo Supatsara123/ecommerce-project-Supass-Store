@@ -38,7 +38,7 @@
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }} d-none d-lg-block">
                                 <div class="row">
                                     @foreach ($chunk as $tcate)
-                                        <div class="col-2 col-lg-2 col-md-3 g-2">
+                                        <div class="col-2 col-lg-2 col-md-3 g-1">
                                             <a href="{{ route('viewcategory', $tcate->slug) }}">
                                                 <div class="card">
                                                     <img src="{{ asset($tcate->image) }}" class="card-img-small"
@@ -58,7 +58,7 @@
                                 <div class="row">
                                     @foreach ($chunk as $tcate)
                                         <div class="col-3 col-md-3 g-2">
-                                            <a href="{{ route('viewcategory', $tcate->slug) }}" >
+                                            <a href="{{ route('viewcategory', $tcate->slug) }}">
                                                 <div class="card">
                                                     <img src="{{ asset($tcate->image) }}" class="card-img-small"
                                                         alt="{{ $tcate->name }}">
@@ -100,18 +100,27 @@
                 @if (isset($featured_product) && count($featured_product) > 0)
                     @foreach ($featured_product as $item)
                         <div class="col-6 col-lg-2 col-md-3 g-2">
-                            {{-- <a href="{{ url('customer/category/' . $category->slug . '/' . $prod->slug) }}"> --}}
-                            <a href="{{ url('customer/category/'.$category->slug.'/'.$item->slug) }}">
-                                <div class="card shadow-sm">
-                                    <img src="{{ asset($item->image) }}" class="card-img-top" alt="{{ $item->name }}">
-                                    <div class="card-body">
-                                        <p class="card-text fw-semibold">{{ $item->name }}</p>
+                            {{-- <a href="{{ url('customer/category/'.$category->slug.'/'.$item->slug) }}"> --}}
+                            <div class="card shadow-sm">
+                                <img src="{{ asset($item->image) }}" class="card-img-top" alt="{{ $item->name }}">
+
+                                <div class="card-body">
+                                    {{-- <p class="card-text fw-semibold">{{ $item->name }}</p> --}}
+                                    <p class="card-text fw-semibold">{{ ucwords(strtolower($item->name)) }}</p>
+                                </div>
+                                <div class="card-footer bg-white border-0">
+                                    @if ($item['selling_price'] != $item['original_price'])
                                         <div class="d-flex justify-content-between">
                                             <span class="text-success">฿{{ number_format($item->selling_price, 2) }}</span>
                                             <span class="text-decoration-line-through">฿{{ number_format($item->original_price, 2) }}</span>
                                         </div>
-                                    </div>
+                                    @else
+                                        <p class="mb-0">
+                                            ฿{{ number_format($item['original_price'], 2) }}
+                                        </p>
+                                    @endif
                                 </div>
+                            </div>
                             </a>
                         </div>
                     @endforeach

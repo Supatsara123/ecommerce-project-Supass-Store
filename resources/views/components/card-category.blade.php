@@ -1,4 +1,4 @@
-<div id="categoryCarousel" class="carousel slide" data-bs-ride="false">
+{{-- <div id="categoryCarousel" class="carousel slide" data-bs-ride="false">
     <div class="carousel-inner px-4">
         @if (isset($trending_category) && count($trending_category) > 0)
             @foreach ($trending_category->chunk(6) as $chunk)
@@ -108,4 +108,4 @@
         filter: invert(1);
         /* Makes the icon white */
     }
-</style>
+</style> --}}
